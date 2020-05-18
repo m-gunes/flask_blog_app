@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Article detail{% endblock %}
+
+{% block content %}
+
+{% if article %}
+      <h3>{{article.title}}</h3>
+      <hr>
+      <strong>Author :</strong> <span>{{article.author}}</span>
+      <hr>
+      <strong>Date :</strong> <span>{{article.created_at}}</span>
+      <hr>
+      <strong>Content :</strong> 
+
+      <p>
+         {{article.content|safe}}
+      </p>
+
+
+      
+{% else %}
+      <div class="alert alert-danger">Makale Bulunamadi</div>
+{% endif %}
+
+
+
+{% endblock %}
+
+
+
+

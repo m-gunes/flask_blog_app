@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h1>Dasboard</h1>
+<p>hosgeldin {{session['username']}}</p>
+
+
+<a href="/addarticle" class="btn btn-primary">add article</a>
+
+
+{% if articles %}
+      <table class="table table-hover">
+         <thead>
+         <tr>
+            <th scope="col">id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Date</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+         </tr>
+         </thead>
+         <tbody>
+            {% for article in articles %}
+               <tr>
+                  <th scope="row">{{ article.id }}</th>
+                  <td><a href="/article/{{article.id}}">{{ article.title }}</a></td>
+                  <td>{{ article.author }}</td>
+                  <td>{{ article.created_at }}</td>
+                  <td><a href="/edit/{{article.id}}" class="btn btn-primary">Edit</a></td>
+                  <td><a href="/remove/{{article.id}}" class="btn btn-danger">remove</a></td>
+               </tr>
+            {% endfor %}
+         
+         </tbody>
+      </table>
+      
+      
+{% else %}
+      <div class="alert alert-warning">Henuz makaleniz bulunmamaktadir</div>
+{% endif %}
+
+{% endblock %}
+
+
+

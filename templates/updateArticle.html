@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Update Articles{% endblock %}
+
+{% block content %}
+{% from "includes/_formhelpers.html" import render_field %}
+
+
+<h3>Update Articles</h3>
+<hr>
+
+<form noValidate method=post>
+   <dl>
+      {{ render_field(form.title, class='form-control') }}
+      {{ render_field(form.content, class='form-control') }}
+   </dl>
+   <button type="submit" class="btn btn-primary">Update Article</button>
+ </form>
+
+{% endblock %}
+
+
+
+

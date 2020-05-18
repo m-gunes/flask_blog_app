@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Articles{% endblock %}
+
+{% block content %}
+
+<h1>Articles</h1>
+<hr>
+{% if articles %}
+
+<form action='/search' method="post" class="form-inline">
+	<input name="keyword" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+<hr>
+
+<ul class="list-group">
+	{% for article in articles %}
+	<li class="list-group-item"><a href="/article/{{article.id}}">{{article.title}}</a> <strong>({{article.author}})</strong></li>
+	{% endfor %}
+</ul>
+
+
+{% else %}
+<div class="alert alert-danger">Makale bulunmamaktadir</div>
+{% endif %}
+
+
+
+
+{% endblock %}
